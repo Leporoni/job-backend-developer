@@ -1,21 +1,26 @@
 package br.com.intelipost.login.model;
 
-import java.util.Set;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
-
-	private Long id;
-	private String username;
-	private String password;
-	private String passwordConfirm;
-	private Set<?> roles;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String username;
+
+	private String password;
+
+	@Transient
+	private String passwordConfirm;
+
+	@ManyToMany
+	private Set<Role> roles;
+
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +45,6 @@ public class User {
 		this.password = password;
 	}
 
-	@Transient
 	public String getPasswordConfirm() {
 		return passwordConfirm;
 	}
@@ -49,14 +53,11 @@ public class User {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	public Set<?> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<?> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
 }
