@@ -8,5 +8,3 @@ Para rodar o projeto faça o clone do mesmo e depois de abrir no STS(Spring Tool
 acesse o link pra login e entre com "user" e "password" nos respectivos campos.
 Essa é uma demostração bem básica do Spring Security, que em um projeto real teremos mais campos, models, services e as regras de negócio
 necessárias para cada ocasião. 
-
-OBS: Eu me considero um desenvolvedor Júnior I. 
